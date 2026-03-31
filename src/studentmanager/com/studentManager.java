@@ -35,6 +35,9 @@ public class studentManager {
                case 3:
                    viewDetails();
                    break;
+               case 4:
+                   viewFolderDetails();
+                   break;
 
                case 5:
                    deleteFile();
@@ -60,7 +63,7 @@ public class studentManager {
             filename += ".txt";
         }
 
-       File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename + ".txt");
+       File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename);
        //f.createNewFile();
         if(f.createNewFile())
         {
@@ -85,7 +88,7 @@ public class studentManager {
             filename += ".txt";
         }
 
-        File f = new File ("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename + ".txt");
+        File f = new File ("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename);
 
         if (f.exists()) {
 
@@ -123,7 +126,7 @@ public class studentManager {
             filename += ".txt";
        }
 
-       File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename + ".txt");
+       File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename);
        if (f.exists())
        {
            Scanner fw = new Scanner(f);
@@ -139,6 +142,36 @@ public class studentManager {
        }
     }
 
+    public static void viewFolderDetails() throws IOException, InterruptedException {
+       Scanner sc = new Scanner(System.in);
+
+       File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager");
+               if (f.exists() && f.isDirectory()){
+                   File[] files = f.listFiles(); // create array of file to store all files present inside folder!
+
+                   System.out.println("-----File in Directory are:-----");
+
+                   if (files.length == 0) {
+                       System.out.println("The folder is Empty");
+                   }
+                   else {
+                       for (File f1 : files) {
+                           if (f1.isFile()) {
+                               System.out.println(f1.getName());
+                           }
+                       }
+//                       System.out.println(" Directory : ");
+//                       for (File f1 : files) {
+//                           if (f1.isDirectory()) {
+//                               System.out.println(f1.getName());
+//                           } }
+                   }
+               }
+               else {
+                   System.out.println("Folder Not Found");
+               }
+
+    }
     public static void deleteFile() throws IOException, InterruptedException {
        Scanner sc = new Scanner(System.in);
         System.out.print("Enter File Name: ");
@@ -147,7 +180,7 @@ public class studentManager {
             filename += ".txt";
         }
 
-        File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename + ".txt");
+        File f = new File("D:\\1. Coding World\\2_Projects\\Personal\\JAVA\\Student-File-Manager\\StudentManager\\"+ filename);
         if (f.exists()){
             System.out.print("Are You Sure about Deleting a File (Y/n): ");
             String option = sc.nextLine();
@@ -164,7 +197,7 @@ public class studentManager {
         else {
             System.out.println("File Not Found, Please enter Valid File Name\n");
         }
-
    }
+
 }
 
